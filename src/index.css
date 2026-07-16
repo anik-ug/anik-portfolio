@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #f5efe7;
+  --ink: #17151f;
+  --ink-soft: #5f5868;
+  --accent: #b4552a;
+  --accent-deep: #7f361a;
+  --border: rgba(23, 21, 31, 0.12);
+  --shadow:
+    rgba(23, 21, 31, 0.12) 0 24px 60px -32px, rgba(23, 21, 31, 0.08) 0 12px 24px -18px;
+  --heading: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Manrope', 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: var(--sans);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(180, 85, 42, 0.12), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(39, 116, 122, 0.11), transparent 34%),
+    var(--bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image: linear-gradient(rgba(23, 21, 31, 0.04) 1px, transparent 1px);
+  background-size: 100% 22px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), transparent 95%);
+}
+
+a {
+  color: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+p {
+  margin-bottom: 0;
+}
