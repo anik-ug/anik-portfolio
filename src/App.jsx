@@ -1,24 +1,47 @@
+import { useEffect, useState } from 'react'
 import './App.css'
 
 const featuredProjects = [
   {
     title: 'Distributed Task Queue System',
     description:
-      'A distributed task processing platform built with Spring Boot, RabbitMQ, MySQL, Docker, and JPA/Hibernate. It includes secure REST APIs, retries, manual acknowledgements, worker isolation, and task status tracking.',
+      'Distributed task processing platform built with Spring Boot, RabbitMQ, MySQL, Docker, and JPA/Hibernate. Includes secure REST APIs, retries, manual acknowledgements, worker isolation, and task status tracking.',
     meta: 'Java, Spring Boot, RabbitMQ, MySQL, Docker',
+    image: '/task-queue.svg',
   },
   {
     title: 'Quiz Application',
     description:
-      'A console-based Java quiz app that uses OOP, collections, answer validation, and automated score calculation with a modular design.',
+      'Console-based Java quiz application with OOP, collections, answer validation, and automated score calculation.',
     meta: 'Java, OOP, Collections, Spring Boot, MySQL',
+    image: '/security-api.svg',
   },
   {
     title: 'Student Management Console',
     description:
-      'A public GitHub project that demonstrates console-based Java workflows with file persistence and structured CRUD-style management.',
+      'Public Java project focused on console workflows, file persistence, and structured CRUD-style management.',
     meta: 'Public GitHub repo, Java, file persistence',
+    image: '/portfolio-hero.svg',
   },
+]
+
+const quickFacts = [
+  { value: '600+', label: 'DSA problems solved' },
+  { value: '9', label: 'Public repositories' },
+  { value: '7.81', label: 'Current CGPA' },
+]
+
+const skillChips = [
+  'Java',
+  'Spring Boot',
+  'REST APIs',
+  'JWT Security',
+  'MySQL',
+  'Docker',
+  'RabbitMQ',
+  'AWS',
+  'Linux',
+  'JPA/Hibernate',
 ]
 
 const strengths = [
@@ -81,12 +104,34 @@ const highlights = [
     points: [
       '9 public repositories on the GitHub profile.',
       'Pinned projects include distributed-task-queue-system, quiz-app, and student-management-console.',
-      'Profile tagline: Pre-final year full stack developer focused on Java Spring Boot and MERN.',
+      'Profile tagline: Pre-final year developer focused on Java, Spring Boot, and MERN.',
     ],
   },
 ]
 
+function getInitialTheme() {
+  if (typeof window === 'undefined') {
+    return 'light'
+  }
+
+  const storedTheme = window.localStorage.getItem('theme')
+  if (storedTheme === 'light' || storedTheme === 'dark') {
+    return storedTheme
+  }
+
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+}
+
 function App() {
+  const [theme, setTheme] = useState(getInitialTheme)
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    window.localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const nextTheme = theme === 'dark' ? 'light' : 'dark'
+
   return (
     <main className="page-shell">
       <header className="site-header">
@@ -94,54 +139,91 @@ function App() {
           <span className="brand-mark">AK</span>
           <span className="brand-copy">
             <strong>Anik Kumar</strong>
-            <small>Backend Portfolio</small>
+            <small>Backend Developer</small>
           </span>
         </a>
+
+        <button
+          className="theme-toggle"
+          type="button"
+          onClick={() => setTheme(nextTheme)}
+          aria-label={`Switch to ${nextTheme} mode`}
+          aria-pressed={theme === 'dark'}
+        >
+          <span className="theme-toggle-track" aria-hidden="true">
+            <span className="theme-toggle-thumb">
+              {theme === 'dark' ? '🌙' : '☀️'}
+            </span>
+          </span>
+          <span className="theme-toggle-copy">
+            <span className="theme-toggle-label">Theme</span>
+            <strong>{theme === 'dark' ? 'Dark mode' : 'Light mode'}</strong>
+          </span>
+        </button>
 
         <nav className="site-nav" aria-label="Primary">
           <a href="#about">About</a>
           <a href="#projects">Work</a>
+          <a href="#experience">Background</a>
           <a href="#contact">Contact</a>
         </nav>
       </header>
 
       <section className="hero-panel" id="top">
-        <div className="eyebrow">Backend Engineer Portfolio</div>
+        <div className="eyebrow">Backend Developer Portfolio</div>
         <div className="hero-grid">
           <div className="hero-copy">
+            <div className="hero-topline">
+              <span className="status-pill">Open to backend internships and entry-level roles</span>
+              <span className="hero-location">IIIT Ranchi · India</span>
+            </div>
             <p className="intro">Hi, I’m Anik Kumar</p>
-            <h1>Pre-final year ECE student building secure Java backend systems.</h1>
+            <h1>Java backend developer focused on secure APIs and reliable systems.</h1>
             <p className="lede">
-              I’m a backend-focused developer from IIIT Ranchi working with Java, Spring Boot,
-              REST APIs, MySQL, Docker, JWT security, and cloud tooling. My GitHub profile shows
-              public projects in distributed systems, console applications, and backend workflows.
+              I’m a backend developer from IIIT Ranchi working with Java, Spring Boot, REST APIs,
+              MySQL, Docker, JWT security, and cloud tools. I care most about clean implementation,
+              reliability, and code that is easy to maintain.
             </p>
 
             <div className="hero-actions">
               <a className="button button-primary" href="#projects">
-                View projects
+                View selected work
               </a>
               <a className="button button-secondary" href="/Anik-Kumar-CV.pdf" download>
                 Download CV
               </a>
               <a className="button button-secondary" href="#contact">
-                Contact details
+                Contact me
               </a>
+            </div>
+
+            <div className="hero-chips" aria-label="Core technologies">
+              {skillChips.map((skill) => (
+                <span className="chip" key={skill}>
+                  {skill}
+                </span>
+              ))}
             </div>
           </div>
 
           <aside className="hero-card" aria-label="Profile highlights">
-            <div className="stat">
-              <span className="stat-value">600+</span>
-              <span className="stat-label">DSA problems solved across LeetCode and GFG</span>
+            <div className="hero-visual-frame">
+              <img className="hero-visual" src="/portfolio-hero.svg" alt="Portfolio visual composition" />
             </div>
-            <div className="stat">
-              <span className="stat-value">9</span>
-              <span className="stat-label">Public repositories on GitHub</span>
+            <div className="hero-card-header">
+              <p className="project-meta">Snapshot</p>
+              <h2>Selected metrics and profile signals.</h2>
             </div>
-            <div className="stat">
-              <span className="stat-value">7.81</span>
-              <span className="stat-label">Current CGPA at IIIT Ranchi</span>
+            <div className="stat-grid">
+              {quickFacts.map((fact) => (
+                <div className="stat" key={fact.label}>
+                  <span className="stat-value">{fact.value}</span>
+                  <span className="stat-label">{fact.label}</span>
+                </div>
+              ))}
+            </div>
+            <div className="hero-note">
+              Backend delivery, problem solving, and systems work.
             </div>
           </aside>
         </div>
@@ -150,17 +232,17 @@ function App() {
       <section className="section two-column" id="about">
         <div>
           <p className="section-label">About</p>
-          <h2>Java backend engineer focused on security, reliability, and clean systems.</h2>
+          <h2>Java backend developer with a focus on security, reliability, and clean systems.</h2>
         </div>
         <div className="section-copy">
           <p>
             I’m currently pursuing a B.Tech in Electronics & Communication Engineering at IIIT
             Ranchi. My work centers on backend architecture, secure APIs, authentication, database
-            design, and cloud-backed deployment.
+            design, and cloud deployment.
           </p>
           <p>
             I also keep a strong problem-solving baseline through DSA practice, with 600+ solved
-            problems and hands-on experience using Java, Spring Boot, Docker, RabbitMQ, AWS, and
+            problems and hands-on experience with Java, Spring Boot, Docker, RabbitMQ, AWS, and
             monitoring tools.
           </p>
         </div>
@@ -169,11 +251,14 @@ function App() {
       <section className="section" id="projects">
         <div className="section-heading">
           <p className="section-label">Selected Work</p>
-          <h2>Projects pulled from your CV and public GitHub profile.</h2>
+          <h2>Projects that show backend implementation and system design.</h2>
         </div>
         <div className="project-grid">
           {featuredProjects.map((project) => (
             <article className="project-card" key={project.title}>
+              <div className="project-image-frame">
+                <img className="project-image" src={project.image} alt="" aria-hidden="true" />
+              </div>
               <p className="project-meta">{project.meta}</p>
               <h3>{project.title}</h3>
               <p>{project.description}</p>
@@ -182,28 +267,28 @@ function App() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" id="experience">
         <div className="section-heading">
           <p className="section-label">Experience & Education</p>
           <h2>Academic background and internship experience.</h2>
         </div>
-        <div className="project-grid">
+        <div className="timeline-grid">
           {education.map((item) => (
-            <article className="project-card" key={item.title}>
+            <article className="timeline-card" key={item.title}>
               <p className="project-meta">Education</p>
               <h3>{item.title}</h3>
               <p>{item.meta}</p>
-              <p>{item.time}</p>
+              <p className="timeline-time">{item.time}</p>
               <p>{item.detail}</p>
             </article>
           ))}
 
           {experience.map((item) => (
-            <article className="project-card" key={item.title}>
+            <article className="timeline-card" key={item.title}>
               <p className="project-meta">Experience</p>
               <h3>{item.title}</h3>
               <p>{item.meta}</p>
-              <p>{item.time}</p>
+              <p className="timeline-time">{item.time}</p>
               <p>{item.detail}</p>
               <ul className="bullet-list">
                 {item.bullets.map((bullet) => (
@@ -218,9 +303,9 @@ function App() {
       <section className="section">
         <div className="section-heading">
           <p className="section-label">Skills & Recognition</p>
-          <h2>Technical strengths, certifications, and public profile context.</h2>
+          <h2>Technical strengths, certifications, and public profile signals.</h2>
         </div>
-        <div className="project-grid">
+        <div className="project-grid project-grid-alt">
           {highlights.map((item) => (
             <article className="project-card" key={item.title}>
               <p className="project-meta">{item.title}</p>
@@ -238,7 +323,7 @@ function App() {
       <section className="section split-panel">
         <div className="skills-card">
           <p className="section-label">Core Stack</p>
-          <h2>What I work with most often.</h2>
+          <h2>Software and tools I use regularly.</h2>
           <ul className="bullet-list">
             {strengths.map((item) => (
               <li key={item}>{item}</li>
@@ -248,7 +333,7 @@ function App() {
 
         <div className="contact-card" id="contact">
           <p className="section-label">Contact</p>
-          <h2>Let’s build, review, or discuss backend work.</h2>
+          <h2>Available for backend internships and entry-level roles.</h2>
           <div className="contact-links">
             
             {contactLinks.map((link) => (
@@ -262,7 +347,7 @@ function App() {
       </section>
 
       <footer className="site-footer">
-        <p>Built with React and Vite. Contact details, projects, and credentials are based on your CV and public GitHub profile.</p>
+        <p>Open to Software Engineering, Backend Development, and Generative AI opportunities. Feel free to connect!</p>
         <a href="#top">Back to top</a>
       </footer>
     </main>
