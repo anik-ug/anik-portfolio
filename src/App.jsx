@@ -8,13 +8,23 @@ const featuredProjects = [
       'A backend system for processing tasks asynchronously using RabbitMQ workers. Tasks are stored in MySQL, processed by separate workers, and tracked through their status.',
     meta: 'Java · Spring Boot · RabbitMQ · MySQL · Docker',
     image: '/task-queue.svg',
+    link: 'https://github.com/anik-ug/distributed-task-queue-system',
+  },
+  {
+    title: 'Secure Auth',
+    description:
+      'Authentication and authorization backend with JWT-based security, Spring Security, and protected REST APIs.',
+    meta: 'Java · Spring Boot · Spring Security · JWT',
+    image: '/security-api.svg',
+    link: 'https://github.com/anik-ug/secure-auth',
   },
   {
     title: 'Quiz Application',
     description:
       'A Java-based quiz application built to practice object-oriented programming, collections, input handling, and score calculation.',
     meta: 'Java · OOP · Collections',
-    image: '/security-api.svg',
+    image: '/portfolio-hero.svg',
+    link: 'https://github.com/anik-ug/quiz-app',
   },
   {
     title: 'Student Management Console',
@@ -22,6 +32,7 @@ const featuredProjects = [
       'A console application for managing student records with CRUD operations and file-based data persistence.',
     meta: 'Java · File I/O · CRUD',
     image: '/portfolio-hero.svg',
+    link: 'https://github.com/anik-ug/student-management-console',
   },
 ]
 
@@ -115,7 +126,7 @@ const highlights = [
     title: 'GitHub',
     points: [
       '9 public repositories.',
-      'Projects include distributed-task-queue-system, quiz-app, and student-management-console.',
+      'Projects include distributed-task-queue-system, secure-auth, quiz-app, and student-management-console.',
       'Regularly building and experimenting with backend technologies.',
     ],
   },
@@ -149,6 +160,8 @@ function App() {
 
   return (
     <main className="page-shell">
+      {/* HEADER */}
+
       <header className="site-header">
         <a className="brand" href="#top">
           <span className="brand-mark">AK</span>
@@ -181,7 +194,9 @@ function App() {
 
           <span className="theme-toggle-copy">
             <span className="theme-toggle-label">Theme</span>
-            <strong>{theme === 'dark' ? 'Dark mode' : 'Light mode'}</strong>
+            <strong>
+              {theme === 'dark' ? 'Dark mode' : 'Light mode'}
+            </strong>
           </span>
         </button>
       </header>
@@ -189,7 +204,9 @@ function App() {
       {/* HERO */}
 
       <section className="hero-panel" id="top">
-        <div className="eyebrow">Java · Spring Boot · Backend</div>
+        <div className="eyebrow">
+          Java · Spring Boot · Backend
+        </div>
 
         <div className="hero-grid">
           <div className="hero-copy">
@@ -203,20 +220,25 @@ function App() {
               </span>
             </div>
 
-            <p className="intro">Hi, I'm Anik.</p>
+            <p className="intro">
+              Hi, I'm Anik.
+            </p>
 
             <h1>
               I build backend applications with Java and Spring Boot.
             </h1>
 
             <p className="lede">
-              I'm a pre-final year student at IIIT Ranchi interested in
-              backend development, system design, and building things that
-              work reliably in the real world.
+              I'm a pre-final year student at IIIT Ranchi interested
+              in backend development, system design, and building
+              things that work reliably in the real world.
             </p>
 
             <div className="hero-actions">
-              <a className="button button-primary" href="#projects">
+              <a
+                className="button button-primary"
+                href="#projects"
+              >
                 See my projects
               </a>
 
@@ -228,12 +250,18 @@ function App() {
                 Download CV
               </a>
 
-              <a className="button button-secondary" href="#contact">
+              <a
+                className="button button-secondary"
+                href="#contact"
+              >
                 Get in touch
               </a>
             </div>
 
-            <div className="hero-chips" aria-label="Technologies">
+            <div
+              className="hero-chips"
+              aria-label="Technologies"
+            >
               {skillChips.map((skill) => (
                 <span className="chip" key={skill}>
                   {skill}
@@ -242,7 +270,12 @@ function App() {
             </div>
           </div>
 
-          <aside className="hero-card">
+          {/* HERO CARD */}
+
+          <aside
+            className="hero-card"
+            aria-label="Profile highlights"
+          >
             <div className="hero-visual-frame">
               <img
                 className="hero-visual"
@@ -252,7 +285,9 @@ function App() {
             </div>
 
             <div className="hero-card-header">
-              <p className="project-meta">A few numbers</p>
+              <p className="project-meta">
+                A few numbers
+              </p>
 
               <h2>
                 Things I've been working on.
@@ -285,7 +320,9 @@ function App() {
 
       <section className="section two-column" id="about">
         <div>
-          <p className="section-label">About me</p>
+          <p className="section-label">
+            About me
+          </p>
 
           <h2>
             I'm interested in backend engineering and solving
@@ -297,8 +334,8 @@ function App() {
           <p>
             I'm pursuing a B.Tech in Electronics & Communication
             Engineering at IIIT Ranchi. Most of my recent work has
-            been around Java, Spring Boot, REST APIs, databases, and
-            authentication.
+            been around Java, Spring Boot, REST APIs, databases,
+            and authentication.
           </p>
 
           <p>
@@ -314,7 +351,9 @@ function App() {
 
       <section className="section" id="projects">
         <div className="section-heading">
-          <p className="section-label">Projects</p>
+          <p className="section-label">
+            Projects
+          </p>
 
           <h2>
             Some things I've built.
@@ -323,7 +362,10 @@ function App() {
 
         <div className="project-grid">
           {featuredProjects.map((project) => (
-            <article className="project-card" key={project.title}>
+            <article
+              className="project-card"
+              key={project.title}
+            >
               <div className="project-image-frame">
                 <img
                   className="project-image"
@@ -337,9 +379,22 @@ function App() {
                 {project.meta}
               </p>
 
-              <h3>{project.title}</h3>
+              <h3>
+                {project.title}
+              </h3>
 
-              <p>{project.description}</p>
+              <p>
+                {project.description}
+              </p>
+
+              <a
+                className="project-link"
+                href={project.link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                View project <span>↗</span>
+              </a>
             </article>
           ))}
         </div>
@@ -347,7 +402,10 @@ function App() {
 
       {/* EXPERIENCE */}
 
-      <section className="section" id="experience">
+      <section
+        className="section"
+        id="experience"
+      >
         <div className="section-heading">
           <p className="section-label">
             Experience & Education
@@ -360,34 +418,56 @@ function App() {
 
         <div className="timeline-grid">
           {education.map((item) => (
-            <article className="timeline-card" key={item.title}>
-              <p className="project-meta">Education</p>
+            <article
+              className="timeline-card"
+              key={item.title}
+            >
+              <p className="project-meta">
+                Education
+              </p>
 
-              <h3>{item.title}</h3>
+              <h3>
+                {item.title}
+              </h3>
 
-              <p>{item.meta}</p>
+              <p>
+                {item.meta}
+              </p>
 
               <p className="timeline-time">
                 {item.time}
               </p>
 
-              <p>{item.detail}</p>
+              <p>
+                {item.detail}
+              </p>
             </article>
           ))}
 
           {experience.map((item) => (
-            <article className="timeline-card" key={item.title}>
-              <p className="project-meta">Experience</p>
+            <article
+              className="timeline-card"
+              key={item.title}
+            >
+              <p className="project-meta">
+                Experience
+              </p>
 
-              <h3>{item.title}</h3>
+              <h3>
+                {item.title}
+              </h3>
 
-              <p>{item.meta}</p>
+              <p>
+                {item.meta}
+              </p>
 
               <p className="timeline-time">
                 {item.time}
               </p>
 
-              <p>{item.detail}</p>
+              <p>
+                {item.detail}
+              </p>
 
               <ul className="bullet-list">
                 {item.bullets.map((bullet) => (
@@ -416,12 +496,17 @@ function App() {
 
         <div className="project-grid project-grid-alt">
           {highlights.map((item) => (
-            <article className="project-card" key={item.title}>
+            <article
+              className="project-card"
+              key={item.title}
+            >
               <p className="project-meta">
                 {item.title}
               </p>
 
-              <h3>{item.title}</h3>
+              <h3>
+                {item.title}
+              </h3>
 
               <ul className="bullet-list">
                 {item.points.map((point) => (
@@ -456,7 +541,10 @@ function App() {
           </ul>
         </div>
 
-        <div className="contact-card" id="contact">
+        <div
+          className="contact-card"
+          id="contact"
+        >
           <p className="section-label">
             Contact
           </p>
@@ -470,17 +558,31 @@ function App() {
               <a
                 key={link.label}
                 href={link.href}
-                target={link.label === 'Email' ? undefined : '_blank'}
-                rel={link.label === 'Email' ? undefined : 'noreferrer'}
+                target={
+                  link.label === 'Email'
+                    ? undefined
+                    : '_blank'
+                }
+                rel={
+                  link.label === 'Email'
+                    ? undefined
+                    : 'noreferrer'
+                }
               >
-                <span>{link.label}</span>
+                <span>
+                  {link.label}
+                </span>
 
-                <strong>{link.value}</strong>
+                <strong>
+                  {link.value}
+                </strong>
               </a>
             ))}
           </div>
         </div>
       </section>
+
+      {/* FOOTER */}
 
       <footer className="site-footer">
         <p>
