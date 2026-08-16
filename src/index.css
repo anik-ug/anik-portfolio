@@ -2,62 +2,62 @@
 
 :root {
   /* Color Hunt Palette
-     #F8B2B2 - Soft Pink
-     #AF719D - Mauve
-     #8B639B - Purple
-     #403D88 - Deep Indigo
+     #111844 - Deep Navy
+     #4B5694 - Indigo
+     #7288AE - Slate Blue
+     #EAE0CF - Warm Cream
   */
 
-  --bg: #f8b2b2;
+  --bg: #eae0cf;
 
-  --ink: #403d88;
-  --ink-soft: #6f5a78;
+  --ink: #111844;
+  --ink-soft: #4b5694;
 
-  --accent: #af719d;
-  --accent-deep: #403d88;
+  --accent: #4b5694;
+  --accent-deep: #111844;
 
-  --border: rgba(64, 61, 136, 0.16);
+  --border: rgba(17, 24, 68, 0.16);
 
-  --surface: rgba(255, 247, 247, 0.76);
-  --surface-strong: rgba(255, 250, 250, 0.94);
-  --surface-soft: rgba(255, 247, 247, 0.68);
+  --surface: rgba(255, 250, 240, 0.78);
+  --surface-strong: rgba(255, 252, 246, 0.94);
+  --surface-soft: rgba(255, 250, 240, 0.68);
 
-  --surface-border: rgba(64, 61, 136, 0.16);
-  --surface-border-strong: rgba(64, 61, 136, 0.26);
+  --surface-border: rgba(17, 24, 68, 0.16);
+  --surface-border-strong: rgba(17, 24, 68, 0.26);
 
-  --surface-glow: rgba(175, 113, 157, 0.18);
+  --surface-glow: rgba(75, 86, 148, 0.18);
 
   --shadow:
-    rgba(64, 61, 136, 0.16) 0 24px 60px -32px,
-    rgba(64, 61, 136, 0.1) 0 12px 24px -18px;
+    rgba(17, 24, 68, 0.18) 0 24px 60px -32px,
+    rgba(17, 24, 68, 0.10) 0 12px 24px -18px;
 
   --heading: 'Fraunces', Georgia, serif;
   --sans: 'Manrope', 'Segoe UI', sans-serif;
 }
 
 :root[data-theme='dark'] {
-  --bg: #403d88;
+  --bg: #111844;
 
-  --ink: #fff1f1;
-  --ink-soft: #e0c9d9;
+  --ink: #eae0cf;
+  --ink-soft: #b8c2d6;
 
-  --accent: #f8b2b2;
-  --accent-deep: #af719d;
+  --accent: #7288ae;
+  --accent-deep: #4b5694;
 
-  --border: rgba(248, 178, 178, 0.14);
+  --border: rgba(234, 224, 207, 0.14);
 
-  --surface: rgba(139, 99, 155, 0.22);
-  --surface-strong: rgba(139, 99, 155, 0.34);
-  --surface-soft: rgba(64, 61, 136, 0.72);
+  --surface: rgba(75, 86, 148, 0.20);
+  --surface-strong: rgba(75, 86, 148, 0.34);
+  --surface-soft: rgba(17, 24, 68, 0.72);
 
-  --surface-border: rgba(248, 178, 178, 0.18);
-  --surface-border-strong: rgba(248, 178, 178, 0.3);
+  --surface-border: rgba(114, 136, 174, 0.20);
+  --surface-border-strong: rgba(114, 136, 174, 0.32);
 
-  --surface-glow: rgba(248, 178, 178, 0.14);
+  --surface-glow: rgba(114, 136, 174, 0.16);
 
   --shadow:
-    rgba(0, 0, 0, 0.34) 0 24px 60px -32px,
-    rgba(0, 0, 0, 0.24) 0 12px 24px -18px;
+    rgba(0, 0, 0, 0.38) 0 24px 60px -32px,
+    rgba(0, 0, 0, 0.26) 0 12px 24px -18px;
 }
 
 * {
@@ -77,12 +77,12 @@ body {
   background:
     radial-gradient(
       circle at top left,
-      color-mix(in srgb, var(--accent) 28%, transparent),
+      color-mix(in srgb, var(--accent) 22%, transparent),
       transparent 34%
     ),
     radial-gradient(
       circle at 85% 12%,
-      color-mix(in srgb, var(--accent-deep) 20%, transparent),
+      color-mix(in srgb, var(--accent-deep) 18%, transparent),
       transparent 28%
     ),
     radial-gradient(
@@ -102,7 +102,7 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.18;
+  opacity: 0.16;
 
   background-image:
     linear-gradient(
@@ -135,7 +135,7 @@ svg {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--accent) 40%, transparent);
+  background: color-mix(in srgb, var(--accent) 32%, transparent);
   color: var(--ink);
 }
 
