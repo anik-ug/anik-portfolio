@@ -1,39 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --bg: #9cb080;
-  --ink: #273338;
-  --ink-soft: #2b5748;
-  --accent: #2b5748;
-  --accent-deep: #273338;
-  --border: rgba(39, 51, 56, 0.16);
-  --surface: rgba(244, 244, 236, 0.76);
-  --surface-strong: rgba(247, 247, 241, 0.92);
-  --surface-soft: rgba(247, 247, 241, 0.68);
-  --surface-border: rgba(39, 51, 56, 0.16);
-  --surface-border-strong: rgba(39, 51, 56, 0.24);
-  --surface-glow: rgba(43, 87, 72, 0.16);
+  /* Color Hunt Palette
+     #F8B2B2 - Soft Pink
+     #AF719D - Mauve
+     #8B639B - Purple
+     #403D88 - Deep Indigo
+  */
+
+  --bg: #f8b2b2;
+
+  --ink: #403d88;
+  --ink-soft: #6f5a78;
+
+  --accent: #af719d;
+  --accent-deep: #403d88;
+
+  --border: rgba(64, 61, 136, 0.16);
+
+  --surface: rgba(255, 247, 247, 0.76);
+  --surface-strong: rgba(255, 250, 250, 0.94);
+  --surface-soft: rgba(255, 247, 247, 0.68);
+
+  --surface-border: rgba(64, 61, 136, 0.16);
+  --surface-border-strong: rgba(64, 61, 136, 0.26);
+
+  --surface-glow: rgba(175, 113, 157, 0.18);
+
   --shadow:
-    rgba(39, 51, 56, 0.16) 0 24px 60px -32px, rgba(39, 51, 56, 0.1) 0 12px 24px -18px;
+    rgba(64, 61, 136, 0.16) 0 24px 60px -32px,
+    rgba(64, 61, 136, 0.1) 0 12px 24px -18px;
+
   --heading: 'Fraunces', Georgia, serif;
   --sans: 'Manrope', 'Segoe UI', sans-serif;
 }
 
 :root[data-theme='dark'] {
-  --bg: #273338;
-  --ink: #f2f3eb;
-  --ink-soft: #9cb080;
-  --accent: #9cb080;
-  --accent-deep: #618764;
-  --border: rgba(255, 255, 255, 0.12);
-  --surface: rgba(43, 87, 72, 0.2);
-  --surface-strong: rgba(43, 87, 72, 0.34);
-  --surface-soft: rgba(39, 51, 56, 0.7);
-  --surface-border: rgba(156, 176, 128, 0.18);
-  --surface-border-strong: rgba(156, 176, 128, 0.3);
-  --surface-glow: rgba(156, 176, 128, 0.14);
+  --bg: #403d88;
+
+  --ink: #fff1f1;
+  --ink-soft: #e0c9d9;
+
+  --accent: #f8b2b2;
+  --accent-deep: #af719d;
+
+  --border: rgba(248, 178, 178, 0.14);
+
+  --surface: rgba(139, 99, 155, 0.22);
+  --surface-strong: rgba(139, 99, 155, 0.34);
+  --surface-soft: rgba(64, 61, 136, 0.72);
+
+  --surface-border: rgba(248, 178, 178, 0.18);
+  --surface-border-strong: rgba(248, 178, 178, 0.3);
+
+  --surface-glow: rgba(248, 178, 178, 0.14);
+
   --shadow:
-    rgba(0, 0, 0, 0.34) 0 24px 60px -32px, rgba(0, 0, 0, 0.24) 0 12px 24px -18px;
+    rgba(0, 0, 0, 0.34) 0 24px 60px -32px,
+    rgba(0, 0, 0, 0.24) 0 12px 24px -18px;
 }
 
 * {
@@ -49,11 +73,25 @@ body {
   min-width: 320px;
   font-family: var(--sans);
   color: var(--ink);
+
   background:
-    radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 20%, transparent), transparent 34%),
-    radial-gradient(circle at 85% 12%, color-mix(in srgb, var(--accent-deep) 16%, transparent), transparent 28%),
-    radial-gradient(circle at bottom right, color-mix(in srgb, var(--ink) 10%, transparent), transparent 34%),
+    radial-gradient(
+      circle at top left,
+      color-mix(in srgb, var(--accent) 28%, transparent),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 85% 12%,
+      color-mix(in srgb, var(--accent-deep) 20%, transparent),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      color-mix(in srgb, var(--ink) 10%, transparent),
+      transparent 34%
+    ),
     var(--bg);
+
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -65,9 +103,21 @@ body::before {
   inset: 0;
   pointer-events: none;
   opacity: 0.18;
-  background-image: linear-gradient(color-mix(in srgb, var(--ink) 6%, transparent) 1px, transparent 1px);
+
+  background-image:
+    linear-gradient(
+      color-mix(in srgb, var(--ink) 6%, transparent) 1px,
+      transparent 1px
+    );
+
   background-size: 100% 24px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), transparent 95%);
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.65),
+      transparent 95%
+    );
 }
 
 a {
@@ -85,7 +135,7 @@ svg {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--accent) 28%, transparent);
+  background: color-mix(in srgb, var(--accent) 40%, transparent);
   color: var(--ink);
 }
 
